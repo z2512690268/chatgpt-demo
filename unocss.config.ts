@@ -10,27 +10,63 @@ import {
 
 export default defineConfig({
   presets: [
-    presetUno(),
-    presetAttributify(),
-    presetIcons({
-      scale: 1.1,
-      cdn: 'https://esm.sh/',
+    presetUno({
+      dark: 'class',
     }),
+    presetAttributify(),
+    presetIcons(),
     presetTypography({
       cssExtend: {
-        'ul,ol': {
-          'padding-left': '2.25em',
-          'position': 'relative',
+        'h1': {
+          'font-size': '1.25em',
+          'margin': '1rem 0',
+        },
+        'h2': {
+          'font-size': '1.16em',
+          'margin': '1rem 0',
+        },
+        'h3': {
+          'font-size': '1.1em',
+          'margin': '1rem 0',
+        },
+        'h4, h5, h6': {
+          'font-size': '1em',
+          'margin': '1rem 0',
+        },
+        ':not(pre) > code': {
+          'font-weight': 400,
+          'padding': '0 0.2em',
+          'color': 'var(--prism-keyword)',
         },
       },
     }),
   ],
   transformers: [transformerVariantGroup(), transformerDirectives()],
   shortcuts: [{
+    'bg-base': 'bg-light-100 dark:bg-[#1c1c1c]',
+    'bg-base-100': 'bg-light-200 dark:bg-[#222222]',
+    'bg-blur': 'bg-light-200/85 dark:bg-[#222222]/85 backdrop-blur-xl backdrop-saturate-150',
+    'bg-sidebar': 'bg-light-400 dark:bg-[#191919]',
+    'bg-modal': 'bg-base dark:bg-base-100',
+    'bg-darker': 'bg-black/4 dark:bg-white/4',
+    'fg-base': 'text-dark dark:text-[#dadada]',
+    'border-base': 'border-black/8 dark:border-white/8',
+    'border-b-base': 'border-b-black/8 dark:border-b-white/8',
+    'border-lighter': 'border-light-600 dark:border-dark-300',
+    'border-darker': 'border-black/50 dark:border-white/50',
+    'placeholder-base': 'placeholder:op-50 dark:placeholder:op-30',
+    'hv-base': 'transition-colors cursor-pointer hover:bg-darker',
+    'hv-foreground': 'transition-opacity cursor-pointer op-70 hover:op-100',
+    'input-base': 'bg-transparent placeholder:op-50 dark:placeholder:op-30 focus:(ring-0 outline-none)',
+    'max-w-base': 'max-w-3xl mx-auto',
+    'text-error': 'text-red-700 dark:text-red-400/80',
+    'border-error': 'border border-red-700 dark:border-red-400/80',
+    'text-info': 'text-gray-400 dark:text-gray-200',
+    'menu-icon': 'cursor-pointer text-xl fg-base hover-text-emerald-600',
     'fc': 'flex justify-center',
     'fi': 'flex items-center',
-    'fb': 'flex justify-between',
     'fcc': 'fc items-center',
+    'fb': 'flex justify-between',
     'fie': 'fi justify-end',
     'col-fcc': 'flex-col fcc',
     'inline-fcc': 'inline-flex items-center justify-center',
@@ -51,6 +87,12 @@ export default defineConfig({
     'gen-text-wrapper': 'my-4 fc gap-2 transition-opacity',
     'gen-textarea': 'w-full px-3 py-3 min-h-12 max-h-36 rounded-sm bg-(slate op-15) resize-none base-focus placeholder:op-50 dark:(placeholder:op-30) scroll-pa-8px',
     'sys-edit-btn': 'inline-fcc gap-1 text-sm bg-slate/20 px-2 py-1 rounded-md transition-colors cursor-pointer hover:bg-slate/50',
-    'stick-btn-on': '!bg-$c-fg text-$c-bg hover:op-80',
+    'gpt-toggle-wrapper': 'inline-flex rounded border border-gray-100 bg-gray-100 p-1 cursor-pointer',
+    'gpt-toggle-item': 'inline-block rounded font-semibold px-2 py-1 text-xs text-gray-500 focus:relative',
+    'gpt-toggle-active': 'bg-emerald-500 text-white',
+
+    'icon-base': 'md:(w-6 h-6) w-5 h-5',
+    'icon--off': 'group-hover:hidden inline-block',
+    'icon--on': 'hidden group-hover:inline-block',
   }],
 })

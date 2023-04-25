@@ -1,7 +1,6 @@
 import { defineConfig } from 'astro/config'
 import unocss from 'unocss/astro'
 import solidJs from '@astrojs/solid-js'
-
 import node from '@astrojs/node'
 import { VitePWA } from 'vite-plugin-pwa'
 import vercel from '@astrojs/vercel/edge'
@@ -28,6 +27,9 @@ export default defineConfig({
   ],
   output: 'server',
   adapter: envAdapter(),
+  server: {
+    host: '0.0.0.0',
+  },
   vite: {
     plugins: [
       process.env.OUTPUT === 'vercel' && disableBlocks(),
@@ -64,7 +66,7 @@ export default defineConfig({
           periodicSyncForUpdates: 20,
         },
         devOptions: {
-          enabled: true,
+          enabled: false,
         },
       }),
     ],
